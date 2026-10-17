@@ -1,19 +1,27 @@
-# Python_Projects
 # 50 Python Projects
 
 A structured roadmap of 50 projects for learning Python, organised into five
 tiers so skills build up progressively — from fundamentals to full-stack and
 systems work.
 
-Each project is a separate python project inside its own numbered folder:
-`project-01`, `project-02`, and so on.
+Each project is its own folder with a small self-contained setup:
+`project-01/`, `project-02/`, and so on.
+
+## Ground rules
+
+1. Say which project number you're starting; you'll get a nudge on where to
+   begin — not the solution.
+2. When stuck, describe what you tried and what broke; you'll be pointed toward
+   the concept, not handed the fix.
+3. After each project, paste the code for a review of bugs, style, and better
+   approaches.
 
 ---
 
 ## Tier 1 — Fundamentals (1–10)
 
-Small, single-file programs. Focus on syntax, control flow, and the borrow
-checker.
+Small, single-file scripts. Focus on syntax, control flow, functions, and
+data structures.
 
 1. Number guessing game
 2. Simple calculator (CLI)
@@ -43,7 +51,7 @@ Files, loops, and functions working together.
 
 ## Tier 3 — OOP & Intermediate Logic (21–30)
 
-Structuring data and systems: traits, modules, and modelling entities.
+Structuring data and systems: classes, modules, and modelling entities.
 
 21. Library management system
 22. Bank account simulator (OOP)
@@ -87,3 +95,60 @@ Concurrency, performance, and putting it all together.
 50. Full-stack project: your own idea, using everything above
 
 ---
+
+## Requirements
+
+Python 3.11+ and a virtual environment tool (`venv` is built in; `uv` is
+faster if you have it).
+
+```bash
+python3 --version
+```
+
+## Usage
+
+Tier 1–3 are plain scripts:
+
+```bash
+cd project-01
+python3 main.py
+```
+
+From Tier 4 on, each project is a package with its own venv:
+
+```bash
+cd project-31
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python3 main.py
+```
+
+Useful commands:
+
+```bash
+python3 -m venv .venv   # create environment
+pip install -r requirements.txt
+python3 -m pip list     # what's installed
+python3 -m compileall . # syntax check
+python3 -m pytest       # tests (from Tier 3 on)
+ruff check .            # lints
+ruff format .           # format
+```
+
+## Starting a project
+
+```bash
+mkdir project-01 && cd project-01
+python3 -m venv .venv && source .venv/bin/activate
+```
+
+Keep each program small and focused, and add a short explaining the concept the project was meant
+to teach and anything that tripped you up.
+
+## Dependencies
+
+Tier 1–3 need only the standard library — try solving them with `builtins`
+before reaching for packages. From Tier 4 onward you'll pull in packages like
+`requests`, `httpx`, `pandas`, `flask`/`fastapi`, `sqlalchemy`, and `asyncio`;
+look each one up on [PyPI](https://pypi.org) or [Real Python](https://realpython.com)
+when you meet it.
